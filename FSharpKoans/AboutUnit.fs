@@ -102,7 +102,9 @@ module ``15: Advanced techniques`` =
         // Extending a bit more, what do you do when you want to apply a function,
         // but modify the result before you give it back?
         let f animal noise = animal + " says " + noise
-        let cows = f  // <-- multiple words on this line, or you may want to make this a multi-line thing.  You MUST use `f`.
+        let cows = 
+            let addSound = f "cow"
+            fun y-> (addSound y) + ", de gozaru" // <-- multiple words on this line, or you may want to make this a multi-line thing.  You MUST use `f`.
         cows "moo" |> should equal "cow says moo, de gozaru"
         cows "MOOooOO" |> should equal "cow says MOOooOO, de gozaru"
 
